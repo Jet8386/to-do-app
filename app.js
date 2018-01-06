@@ -31,6 +31,9 @@ function onReady() {
 	newToDoText.value= '';
 
 	});
+delButton.addEventListener('click', () =>{
+      toDoList.removeChild(newLi);
+    });
 }
 
 window.onload = function(){
