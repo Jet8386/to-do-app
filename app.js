@@ -19,7 +19,7 @@ function onReady() {
 	checkbox.type = "checkbox";
 
 	//set the title
-	newLi.appendChild(checkbox);
+	newLi.textContent = title;
 
 	//attach the checkbox to the li
 	newLi.appendChild(checkbox);
@@ -37,6 +37,5 @@ delButton.addEventListener('click', () =>{
 }
 
 window.onload = function(){
-	alert("The window has loaded!")
 	onReady();
 };
