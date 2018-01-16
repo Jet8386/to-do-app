@@ -1,39 +1,54 @@
 function onReady() {
-	const addToDoForm = document.getElementById('addToDoForm');
-	const newToDoText = document.getElementById('newToDoText');
-	const toDoList = document.getElementById('toDoList'); 
 
-	addToDoForm.addEventListener('submit', event => {
-	event.preventDefault();
-
-	//get the text
-	let title = newToDoText.value;
-
-	//create a new li
-	let newLi = document.createElement('li');
+	let toDos = [];
 	
-	//create new input
-	let checkbox = document.createElement('input');
+	const addToDoForm = document.getElementById('addToDoForm');
+	const newToDoText = document.getElementId('newToDoText');
 
-	//set the input's type to checkbox
-	checkbox.type = "checkbox";
+	const toDoList = document.getElementById('toDoList');
 
-	//set the title
-	newLi.textContent = title;
 
-	//attach the checkbox to the li
-	newLi.appendChild(checkbox);
+        function createNewToDo() {
+		if (!newToDoText.value) {return; }
 
-	//attach the li to the ul 
-	toDoList.appendChild(newLi);
+                toDos.push({
+                        title:newToDoText.value,
+                        complete:false
+                });
 
-	//empty the input
-	newToDoText.value= '';
+		newToDoText.value = '';
+		
+		renderTheUI();
+		
+        }
+	
+	function renderTheUI(){
+		const toDoList = document.getElementByID('toDoList');
+		
+		toDolist.textContent = '';
+		
+		toDos.forEach(function(toDo) {
+			const newToDo = document.createElement('li');
 
-	});
-delButton.addEventListener('click', () =>{
-      toDoList.removeChild(newLi);
-    });
+			const checkbox = documnet.createElement('input');
+			checkbox.type= "checkbox";
+
+			const title = document.createElement('span');
+			title.textContent = toDo.title;
+			
+			toDoList.appendChild (newLi);
+			newLi.appendChil(checkbox);
+
+		});
+	}
+	
+        addToDoForm.addEventListener('submit', event => { 
+                event.preventDefault(); 
+                createNewToDo(); 
+                newToDoText.value = '';
+        }); 
+	
+	renderTheUI();
 }
 
 window.onload = function(){
