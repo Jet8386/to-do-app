@@ -23,7 +23,7 @@ function onReady() {
 		newToDoText.value = '';
 		
 		renderTheUI();
-		
+		id++;		
         }
 	
 	function renderTheUI(){
@@ -41,11 +41,14 @@ function onReady() {
 			title.textContent = toDo.title;
 			
 			toDoList.appendChild (newLi);
-			newLi.appendChil(checkbox);
+			newLi.appendChild(checkbox);
+			
+			deleteToDo.appendChild(newLi);	
 
 		});
 	}
 	
+
         addToDoForm.addEventListener('submit', event => { 
                 event.preventDefault(); 
                 createNewToDo(); 
